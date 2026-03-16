@@ -1,4 +1,4 @@
-# Emotion Detector
+# Final Project - Emotion Detector
 
 Emotion Detector is a Flask web app that analyzes text emotions with the Watson NLP emotion model and returns a formatted response including the dominant emotion.
 
