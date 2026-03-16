@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotion Detector</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 720px;
+        margin: 2rem auto;
+        line-height: 1.5;
+      }
+      textarea {
+        width: 100%;
+        min-height: 120px;
+      }
+      #result {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Emotion Detector</h1>
+    <p>Type text below and click Analyze Emotion.</p>
+    <textarea id="textToAnalyze"></textarea>
+    <br />
+    <button id="analyzeButton" type="button">Analyze Emotion</button>
+    <div id="result"></div>
+
+    <script>
+      async function runEmotionDetector() {
+        const text = document.getElementById("textToAnalyze").value;
+        const response = await fetch(
+          `/emotionDetector?textToAnalyze=${encodeURIComponent(text)}`
+        );
+        const payload = await response.text();
+        document.getElementById("result").innerText = payload;
+      }
+
+      document
+        .getElementById("analyzeButton")
+        .addEventListener("click", runEmotionDetector);
+    </script>
+  </body>
+</html>
